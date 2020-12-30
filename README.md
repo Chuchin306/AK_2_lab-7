@@ -1,18 +1,19 @@
-# AK_2_lab-7
+# AK-lab7
 ## Результат виконання
 
 ### insmod для n=6
 
-![result](AK_2 lab-71.png)
+![1](AK_2 lab-71.png)
 
 ### Пошук адреси помилки
 
-![result](AK_2 lab-72.png)
+![2](AK_2 lab-72.png)
 
 ## Лістинг:
 
 ### Makefile
 
+```makefile
 ccflags-y := -I$(PWD)/inc
 ifneq ($(KERNELRELEASE),)
 # kbuild part of makefile
@@ -32,8 +33,10 @@ clean:
 %.s %.i: %.c
 	$(MAKE) -C $(KDIR) M=$$PWD $@
 endif
-
+```
 ### hello1.h
+
+```c
 // SPDX-License-Identifier: GPL-2.0 OR BSD-3-Clause
 
 #include <linux/ktime.h>
@@ -45,9 +48,11 @@ struct my_list_head {
 };
 
 int print_hello(uint iterations);
+```
 
 ### hello1.c
 
+```cpp
 // SPDX-License-Identifier: GPL-2.0 OR BSD-3-Clause
 
 #include <linux/init.h>
@@ -58,7 +63,7 @@ int print_hello(uint iterations);
 #define DEBUG
 
 MODULE_LICENSE("Dual BSD/GPL");
-MODULE_DESCRIPTION("AK_2 lab-7 advanced task: hello1\n");
+MODULE_DESCRIPTION("AK-2 lab_7 Basic1 task: hello1\n");
 MODULE_AUTHOR("Chuchin Danylo IO-81\n");
 
 static struct my_list_head *head;
@@ -143,15 +148,18 @@ static void __exit hello1_exit(void)
 module_init(hello1_init);
 module_exit(hello1_exit);
 
+```
+
 ### hello2.c
 
+```cpp
 // SPDX-License-Identifier: GPL-2.0 OR BSD-3-Clause
 #include <linux/init.h>
 #include <linux/module.h>
 #include <hello1.h>
 
 MODULE_LICENSE("Dual BSD/GPL");
-MODULE_DESCRIPTION("AK_2 lab-7 advanced task: hello1\n");
+MODULE_DESCRIPTION("AK-2 lab_7 advanced task: hello1\n");
 MODULE_AUTHOR("Chuchin Danylo IO-81\n");
 
 static uint n = 1;
@@ -169,8 +177,13 @@ static void hello_exit(void)
 
 module_init(hello_init);
 module_exit(hello_exit);
+```
 
 ### hello11.ko.unstripped
+
+```assembly
+hello11.ko.unstripped:     file format elf32-littlearm
+
 
 Disassembly of section .text:
 
@@ -382,4 +395,9 @@ static void __exit hello1_exit(void)
 	pr_info("hello1 exit");
   74:	eafffffe 	b	0 <printk>
 
+```
+
 ## Висновок
+
+В данній лабораторній роботі я модифікував код з 6 лабораторної роботи який тепер використовує  BUG_ON() замість друку повідомлення та повернення -EINVAL для неприпустимого значення параметра
+
