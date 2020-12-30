@@ -3,11 +3,11 @@
 
 ### insmod для n=6
 
-![1](AK_2 lab-71.png)
+![AK_2 lab-71](AK_2 lab-71.png)
 
 ### Пошук адреси помилки
 
-![2](AK_2 lab-72.png)
+![AK_2 lab-72](AK_2 lab-72.png)
 
 ## Лістинг:
 
